@@ -47,31 +47,13 @@ elif filters == "Showtimes":
     showtimes = [movies[0]["showtimes"], movies[1]["showtimes"], movies[2]["showtimes"]]
     showtimes_filter = st.pills("", options=showtimes, default=showtimes, selection_mode="multi")
     if showtimes_filter:
-            cols = st.columns(len(showtimes_filter), border=True, vertical_alignment="center")
-    if movies[0]["showtimes"] in showtimes_filter:
-        with col1:
-            st.subheader(movies[0]["title"])
-            st.caption(movies[0]["desc"])
-            st.image("https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?q=80&w=1138&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
+        for i in movies:
+                if movies[i]["showtimes"] in showtimes_flter:
+                        with col:
+                                st.subheader(movies[i]["title"])
+                                st.caption(movies[i]["desc"])
+                                st.image("https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?q=80&w=1138&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
 
-            st.write("Showtimes:")
-            st.button(movies[0]["showtimes"], key="movie_1_showtimes")
-    if movies[1]["showtimes"] in showtimes_filter:
-        with col2:
-            st.subheader(movies[1]["title"])
-            st.caption(movies[1]["desc"])
-            st.image("https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?q=80&w=1138&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
-
-            st.write("Showtimes:")
-            st.button(movies[1]["showtimes"], key="movie_2_showtimes")
-    if movies[2]["showtimes"] in showtimes_filter: 
-        with col3:
-            st.subheader(movies[2]["title"])
-            st.caption(movies[2]["desc"])
-            st.image("https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?q=80&w=1138&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
-
-            st.write("Showtimes:")
-            st.button(movies[2]["showtimes"], key="movie_3_showtimes")
-
-
-
+                                st.write("Showtimes:")
+                                st.button(movies[i]["showtimes"], key="movie_1_showtimes")
+                                
