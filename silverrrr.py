@@ -16,7 +16,7 @@ movies = [
         {"title": "Mein Kampf", "desc": "Is this source reliable?", "showtimes": "12.00 PM"},
         {"title": "Helloman", "desc": "Why am i doing this", "showtimes": "3.00 PM"}]
 
-filters = st.menu_button("Filters", options=["All", "Showtimes"], index=0)
+filters = st.selectbox("Filters", options=["All", "Showtimes"], index=0)
 if filters == "All":
     col1, col2, col3 = st.columns(3, border =True, vertical_alignment="center")
 
