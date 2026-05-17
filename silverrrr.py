@@ -13,31 +13,31 @@ import streamlit as st
 st.write("Silver Kampong")
 
 movies = [
-        {"title": "The Art of Children: My Story", "desc": "A man who values his children", "showtimes": "9.00 AM"},
+        {"title": "Children: My Story", "desc": "A man who values his children", "showtimes": "9.00 AM"},
         {"title": "I too lazy", "desc": "lazy man", "showtimes": "12.00 PM"},
         {"title": "I 2 lazy", "desc": "Why am i doing this", "showtimes": "3.00 PM"}]
 
 col1, col2, col3 = st.columns(3, border =True, vertical_alignment="center")
 
 with col1:
-    st.header(movies[0]["title"])
-    st.write(movies[0]["desc"])
+    st.subheader(movies[0]["title"])
+    st.caption(movies[0]["desc"])
     st.image("https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?q=80&w=1138&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
     #should be link button
-    st.pills("Showtimes", movies[0]["showtimes"])
+    st.button("Showtimes", movies[0]["showtimes"])
 
 
 with col2:
-    st.header(movies[1]["title"])
-    st.write(movies[1]["desc"])
+    st.subheader(movies[1]["title"])
+    st.caption(movies[1]["desc"])
     st.image("https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?q=80&w=1138&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
     #should be link button
-    st.pills("Showtimes", movies[1]["showtimes"])
+    st.button("Showtimes", movies[1]["showtimes"])
 
 
 with col3:
-    st.header(movies[2]["title"])
-    st.write(movies[2]["title"])
+    st.subheader(movies[2]["title"])
+    st.caption(movies[2]["title"])
     st.image("https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?q=80&w=1138&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
     #should be link button
-    st.pills("Showtimes", movies[2]["showtimes"])
+    st.button("Showtimes", movies[2]["showtimes"])
