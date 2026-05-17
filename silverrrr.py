@@ -73,7 +73,7 @@ elif filters == "Halls":
     
     filtered_movies = []
     for m in movies:    
-            if m["hall"] in filtered_movies:
+            if m["hall"] in halls_filter:
                     filtered_movies.append(m)
     
     if halls_filter:
