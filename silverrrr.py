@@ -22,7 +22,7 @@ col1, col2, col3 = st.columns(3, border =True, vertical_alignment="center")
 with col1:
     st.header(movies[0]["title"])
     st.write(movies[0]["desc"])
-    st.photo("https://unsplash.com/photos/four-boy-playing-ball-on-green-grass-tvc5imO5pXk")
+    st.image("https://unsplash.com/photos/four-boy-playing-ball-on-green-grass-tvc5imO5pXk")
     #should be link button
     st.pills("Showtimes", movies[0]["showtimes"])
 
@@ -30,7 +30,7 @@ with col1:
 with col2:
     st.header(movies[1]["title"])
     st.write(movies[1]["desc"])
-    st.photo("https://unsplash.com/photos/four-boy-playing-ball-on-green-grass-tvc5imO5pXk")
+    st.image("https://unsplash.com/photos/four-boy-playing-ball-on-green-grass-tvc5imO5pXk")
     #should be link button
     st.pills("Showtimes", movies[1]["showtimes"])
 
@@ -38,6 +38,6 @@ with col2:
 with col3:
     st.header(movies[2]["title"])
     st.write(movies[2]["title"])
-    st.photo("https://unsplash.com/photos/four-boy-playing-ball-on-green-grass-tvc5imO5pXk")
+    st.image("https://unsplash.com/photos/four-boy-playing-ball-on-green-grass-tvc5imO5pXk")
     #should be link button
     st.pills("Showtimes", movies[2]["showtimes"])
