@@ -45,8 +45,9 @@ elif filters == "Showtimes":
     showtimes_filter = st.pills("", options=showtimes, default=showtimes, selection_mode="multi")
     
     filtered_movies = []
-    if m["showtimes"] in showtimes_filter:
-            filtered_movies.append(m)
+    for m in movies:    
+            if m["showtimes"] in showtimes_filter:
+                    filtered_movies.append(m)
     
     if filtered_movies:
         cols = st.columns(len(filtered_movies), border=True, vertical_alignment="center")
