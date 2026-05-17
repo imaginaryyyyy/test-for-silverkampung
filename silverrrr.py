@@ -47,7 +47,7 @@ if filters == "All":
         st.button(movies[2]["showtimes"])
 elif filters == "Showtimes":
     col1, col2, col3 = st.columns(3, border =True, vertical_alignment="center")
-    showwtimes = [[movies[0]["showtimes"]. [movies][1]["showtimes"], [movies][2]["showtimes]]
+    showwtimes = [[movies[0]["showtimes"]. [movies][1]["showtimes"], [movies][2]["showtimes"]]
     showtimes_filter = st.pills("", showtimes, selection_mode="multi")
     if showtimes_filter == movies[0]["showtimes"]:
         with col1:
