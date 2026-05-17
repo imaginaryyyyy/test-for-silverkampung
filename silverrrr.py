@@ -16,43 +16,47 @@ movies = [
 
 filters = st.selectbox("Filters", options=["All", "Showtimes"], index=0)
 if filters == "All":
-    col1, col2, col3 = st.columns(3, border =True, vertical_alignment="center")
+    col1, col2, col3 = st.columns(3, border=True, vertical_alignment="center")
 
     with col1:
         st.subheader(movies[0]["title"])
         st.caption(movies[0]["desc"])
         st.image("https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?q=80&w=1138&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
-
         st.write("Showtimes:")
         st.button(movies[0]["showtimes"], key="movie_0_all")
-
 
     with col2:
         st.subheader(movies[1]["title"])
         st.caption(movies[1]["desc"])
         st.image("https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?q=80&w=1138&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
-
         st.write("Showtimes:")
         st.button(movies[1]["showtimes"], key="movie_1_all")
-
 
     with col3:
         st.subheader(movies[2]["title"])
         st.caption(movies[2]["desc"])
         st.image("https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?q=80&w=1138&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
-
         st.write("Showtimes:")
         st.button(movies[2]["showtimes"], key="movie_2_all")
+        
 elif filters == "Showtimes":
     showtimes = [movies[0]["showtimes"], movies[1]["showtimes"], movies[2]["showtimes"]]
-    showtimes_filter = st.pills("", options=showtimes, default=showtimes, selection_mode="multi")
-    if showtimes_filter:
-        cols = st.columns(len(showtimes_filter), border=True, vertical_alignment="center")
-        for col, movie in zip(cols, showtimes_filter):
-                with col:
-                        st.subheader(movies["title"])
-                        st.caption(movies["desc"])
-                        st.image("https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?q=80&w=1138&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
-
-                        st.write("Showtimes:")
-                        st.button(movies["showtimes"], key=f"{movies["title"]}, {movies["showtimes"]}")
+    
+    showtimes_filter = st.pills(
+        label="Filter by Showtimes:", 
+        options=showtimes, 
+        default=showtimes, 
+        selection_mode="multi"
+    )
+    
+    filtered_movies = [m for m in movies if m["showtimes"] in showtimes_filter]
+    
+    if filtered_movies:
+        cols = st.columns(len(filtered_movies), border=True, vertical_alignment="center")
+        for col, movie in zip(cols, filtered_movies):
+            with col:
+                st.subheader(movie["title"])
+                st.caption(movie["desc"])
+                st.image("https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?q=80&w=1138&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
+                st.write("Showtimes:")
+                st.button(movie["showtimes"], key=f"{movie['title']}_{movie['showtimes']}")
