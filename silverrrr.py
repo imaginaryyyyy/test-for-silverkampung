@@ -53,11 +53,11 @@ elif filters == "Showtimes":
                 if movies[index]["showtimes"] in showtimes_filter:
                         with cols[index]:
                                 if index < len(cols):
-                                st.subheader(movies[index]["title"])
-                                st.caption(movies[index]["desc"])
-                                st.image("https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?q=80&w=1138&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
+                                        st.subheader(movies[index]["title"])
+                                        st.caption(movies[index]["desc"])
+                                        st.image("https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?q=80&w=1138&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
 
-                                st.write("Showtimes:")
-                                st.button(movies[index]["showtimes"], key=f"{movies[index]["title"]}, {movies[index]["showtimes"]}")
+                                        st.write("Showtimes:")
+                                        st.button(movies[index]["showtimes"], key=f"{movies[index]["title"]}, {movies[index]["showtimes"]}")
                         index += 1
                                 
