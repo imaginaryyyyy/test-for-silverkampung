@@ -10,9 +10,9 @@ import streamlit as st
 
 st.title("Silver Kampong")
 movies = [
-        {"title": "My Children", "desc": "A man who values his children", "showtimes": "9.00 AM", "halls": "Cinema Hall 1"},
-        {"title": "Mein Kampf", "desc": "Is this source reliable?", "showtimes": "12.00 PM", "halls": "Cinema Hall 2"},
-        {"title": "-man", "desc": "-I am powerless", "showtimes": "3.00 PM", "halls": "Cinema Hall 3"}]
+        {"title": "My Children", "desc": "A man who values his children", "showtimes": "9.00 AM", "hall": "Cinema Hall 1"},
+        {"title": "Mein Kampf", "desc": "Is this source reliable?", "showtimes": "12.00 PM", "hall": "Cinema Hall 2"},
+        {"title": "-man", "desc": "-I am powerless", "showtimes": "3.00 PM", "hall": "Cinema Hall 3"}]
 
 filters = st.selectbox("Filters", options=["All", "Showtimes", "Halls"], index=0)
 if filters == "All":
