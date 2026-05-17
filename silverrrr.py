@@ -25,7 +25,7 @@ if filters == "All":
         st.write("Showtimes:")
         st.button(movies[0]["showtimes"], key="showtimes_0_all")
         st.write("Halls:")
-        st.button(movies[1]["hall"], key="halls_0_all")
+        st.button(movies[0]["hall"], key="halls_0_all")
 
     with col2:
         st.subheader(movies[1]["title"])
