@@ -69,14 +69,14 @@ elif filters == "Showtimes":
 elif filters == "All":
     halls = [movies[0]["hall"], movies[1]["hall"], movies[2]["hall"]]
     
-    filtered_movies = st.pills("", options=halls, default=halls, selection_mode="multi")
+    halls_filter = st.pills("", options=halls, default=halls, selection_mode="multi")
     
     filtered_movies = []
     for m in movies:    
             if m["hall"] in filtered_movies:
                     filtered_movies.append(m)
     
-    if filtered_halls:
+    if halls_filter:
         cols = st.columns(len(filtered_movies), border=True, vertical_alignment="center")
         for col, movie in zip(cols, filtered_movies):
             with col:
@@ -84,6 +84,6 @@ elif filters == "All":
                 st.caption(movie["desc"])
                 st.image("https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?q=80&w=1138&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
                 st.write("Halls:")
-                st.button(movie["halls"], key=f"{movie['title']}, {movie['title']}")
+                st.button(movie["hall"], key=f"{movie['title']}, {movie['title']}")
                 st.write("Showtimes:")
                 st.button(movie["showtimes"], key=f"{movie['title']}, {movie['showtimes']}")
