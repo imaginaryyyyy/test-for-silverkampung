@@ -50,7 +50,7 @@ elif filters == "Showtimes":
     if showtimes_filter:
         cols = st.columns(len(showtimes_filter), border=True, vertical_alignment="center")
         for movie in movies:
-                if movies[index]["showtimes"] in showtimes_filter:
+                if movies["showtimes"] in showtimes_filter:
                         with cols[index]:
                                 st.subheader(movies[index]["title"])
                                 st.caption(movies[index]["desc"])
