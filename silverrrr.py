@@ -56,7 +56,7 @@ elif filters == "Showtimes":
             st.image("https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?q=80&w=1138&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
 
             st.write("Showtimes:")
-            st.button(movies[0]["showtimes"])
+            st.button(movies[0]["showtimes"], key="movie_1")
     if movies[1]["showtimes"] in showtimes_filter:
         with col2:
             st.subheader(movies[1]["title"])
@@ -64,7 +64,7 @@ elif filters == "Showtimes":
             st.image("https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?q=80&w=1138&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
 
             st.write("Showtimes:")
-            st.button(movies[1]["showtimes"])
+            st.button(movies[1]["showtimes"], key="movie_2)
     if movies[2]["showtimes"] in showtimes_filter: 
         with col3:
             st.subheader(movies[2]["title"])
@@ -72,7 +72,7 @@ elif filters == "Showtimes":
             st.image("https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?q=80&w=1138&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
 
             st.write("Showtimes:")
-            st.button(movies[2]["showtimes"])
+            st.button(movies[2]["showtimes"], key="movie_3")
 
 
 
