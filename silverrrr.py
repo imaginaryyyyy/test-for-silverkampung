@@ -46,14 +46,16 @@ if filters == "All":
 elif filters == "Showtimes":
     showtimes = [movies[0]["showtimes"], movies[1]["showtimes"], movies[2]["showtimes"]]
     showtimes_filter = st.pills("", options=showtimes, default=showtimes, selection_mode="multi")
+    index = 0    
     if showtimes_filter:
         for i in movies:
                 if movies[i]["showtimes"] in showtimes_flter:
-                        with col:
+                        with col[index]:
                                 st.subheader(movies[i]["title"])
                                 st.caption(movies[i]["desc"])
                                 st.image("https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?q=80&w=1138&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
 
                                 st.write("Showtimes:")
-                                st.button(movies[i]["showtimes"], key="movie_1_showtimes")
+                                st.button(movies[i]["showtimes"], key=f"movies[i]["title"], movies[i], ["showtime"]")
+                                index += 1
                                 
