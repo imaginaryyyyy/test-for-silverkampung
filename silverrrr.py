@@ -48,7 +48,7 @@ elif filters == "Showtimes":
     showtimes_filter = st.pills("", options=showtimes, default=showtimes, selection_mode="multi")
     if showtimes_filter:
         cols = st.columns(len(showtimes_filter), border=True, vertical_alignment="center")
-        for col, movie in zip(cols, filtered_movies):
+        for col, movie in zip(cols, showtimes_filter):
                 if movies[index]["showtimes"] in showtimes_filter:
                         with col:
                                 st.subheader(movies[index]["title"])
