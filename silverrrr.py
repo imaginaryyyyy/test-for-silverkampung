@@ -71,7 +71,7 @@ elif filters == "All":
     
     filtered_movies = st.pills("", options=halls, default=halls, selection_mode="multi")
     
-    filtered_halls = []
+    filtered_movies = []
     for m in movies:    
             if m["hall"] in filtered_movies:
                     filtered_movies.append(m)
