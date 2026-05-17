@@ -47,7 +47,7 @@ if filters == "All":
 elif filters == "Showtimes":
     showtimes = [movies[0]["showtimes"], movies[1]["showtimes"], movies[2]["showtimes"]]
     
-    showtimes_filter = st.pills("", options=showtimes, default=showtimes, selection_mode="multi")
+    showtimes_filter = st.pills("Showtimes", options=showtimes, default=showtimes, selection_mode="multi")
     
     filtered_movies = []
     for m in movies:    
@@ -64,12 +64,12 @@ elif filters == "Showtimes":
                 st.write("Showtimes:")
                 st.button(movie["showtimes"], key=f"{movie['title']}, {movie['showtimes']}")
                 st.write("Halls:")
-                st.button(movie["halls"], key=f"{movie['title']}, {movie['title']}")    
+                st.button(movie["hall"], key=f"{movie['title']}, {movie['title']}")    
 
 elif filters == "All":
     halls = [movies[0]["hall"], movies[1]["hall"], movies[2]["hall"]]
     
-    halls_filter = st.pills("", options=halls, default=halls, selection_mode="multi")
+    halls_filter = st.pills("Showtimes", options=halls, default=halls, selection_mode="multi")
     
     filtered_movies = []
     for m in movies:    
