@@ -23,7 +23,7 @@ with col1:
     st.header(movies[0]["title"])
     st.write(movies[0]["desc"])
     #should be link button
-    st.li("Showtimes", movies[0]["showtimes"])
+    st.pills("Showtimes", movies[0]["showtimes"])
 
 
 with col2:
