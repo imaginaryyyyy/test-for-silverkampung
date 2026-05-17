@@ -46,10 +46,10 @@ if filters == "All":
         st.write("Showtimes:")
         st.button(movies[2]["showtimes"])
 elif filters == "Showtimes":
-    col1, col2, col3 = st.columns(3, border =True, vertical_alignment="center")
     showtimes = [movies[0]["showtimes"], movies[1]["showtimes"], movies[2]["showtimes"]]
     showtimes_filter = st.pills("", showtimes, selection_mode="multi")
     if showtimes_filter == movies[0]["showtimes"]:
+        col1 = st.columns(1, border =True, vertical_alignment="center")
         with col1:
             st.subheader(movies[0]["title"])
             st.caption(movies[0]["desc"])
@@ -58,6 +58,7 @@ elif filters == "Showtimes":
             st.write("Showtimes:")
             st.button(movies[0]["showtimes"])
     if showtimes_filter == movies[1]["showtimes"]:
+        col2 = st.columns(1, border =True, vertical_alignment="center")
         with col2:
             st.subheader(movies[1]["title"])
             st.caption(movies[1]["desc"])
@@ -66,6 +67,7 @@ elif filters == "Showtimes":
             st.write("Showtimes:")
             st.button(movies[1]["showtimes"])
     if showtimes_filter == movies[2]["showtimes"]: 
+        col3 = st.columns(1, border =True, vertical_alignment="center")
         with col3:
             st.subheader(movies[2]["title"])
             st.caption(movies[2]["desc"])
