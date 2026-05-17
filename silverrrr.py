@@ -10,9 +10,9 @@ import streamlit as st
 
 st.title("Silver Kampong")
 movies = [
-        {"title": "My Children", "desc": "A man who values his children", "showtimes": "9.00 AM", "hall": "Cinema Hall 1"},
-        {"title": "Mein Kampf", "desc": "Is this source reliable?", "showtimes": "12.00 PM", "hall": "Cinema Hall 2"},
-        {"title": "-man", "desc": "-I am powerless", "showtimes": "3.00 PM", "hall": "Cinema Hall 3"}]
+        {"title": "My Children", "desc": "A man who values his children", "showtimes": "9.00 AM", "halls": "Cinema Hall 1"},
+        {"title": "Mein Kampf", "desc": "Is this source reliable?", "showtimes": "12.00 PM", "halls": "Cinema Hall 2"},
+        {"title": "-man", "desc": "-I am powerless", "showtimes": "3.00 PM", "halls": "Cinema Hall 3"}]
 
 filters = st.selectbox("Filters", options=["All", "Showtimes", "Halls"], index=0)
 if filters == "All":
@@ -23,22 +23,27 @@ if filters == "All":
         st.caption(movies[0]["desc"])
         st.image("https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?q=80&w=1138&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
         st.write("Showtimes:")
-        st.button(movies[0]["showtimes"], key="movie_0_all")
+        st.button(movies[0]["showtimes"], key="showtimes_0_all")
+        st.write("Halls:")
+        st.button(movies[1]["hall"], key="halls_0_all")
 
     with col2:
         st.subheader(movies[1]["title"])
         st.caption(movies[1]["desc"])
         st.image("https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?q=80&w=1138&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
         st.write("Showtimes:")
-        st.button(movies[1]["showtimes"], key="movie_1_all")
+        st.button(movies[1]["showtimes"], key="showtimes_1_all")
+        st.write("Halls:")
+        st.button(movies[1]["hall"], key="halls_1_all")
 
     with col3:
         st.subheader(movies[2]["title"])
         st.caption(movies[2]["desc"])
         st.image("https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?q=80&w=1138&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
         st.write("Showtimes:")
-        st.button(movies[2]["showtimes"], key="movie_2_all")
-        
+        st.button(movies[2]["showtimes"], key="showtimes_2_all")
+        st.write("Halls:")
+        st.button(movies[2]["hall"], key="halls_2_all")
 elif filters == "Showtimes":
     showtimes = [movies[0]["showtimes"], movies[1]["showtimes"], movies[2]["showtimes"]]
     
@@ -58,5 +63,27 @@ elif filters == "Showtimes":
                 st.image("https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?q=80&w=1138&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
                 st.write("Showtimes:")
                 st.button(movie["showtimes"], key=f"{movie['title']}, {movie['showtimes']}")
+                st.write("Halls:")
+                st.button(movie["halls"], key=f"{movie['title']}, {movie['title']}")    
 
-
+elif filters == "All":
+    halls = [movies[0]["hall"], movies[1]["hall"], movies[2]["hall"]]
+    
+    filtered_movies = st.pills("", options=halls, default=halls, selection_mode="multi")
+    
+    filtered_halls = []
+    for m in movies:    
+            if m["hall"] in filtered_movies:
+                    filtered_movies.append(m)
+    
+    if filtered_halls:
+        cols = st.columns(len(filtered_movies), border=True, vertical_alignment="center")
+        for col, movie in zip(cols, filtered_movies):
+            with col:
+                st.subheader(movie["title"])
+                st.caption(movie["desc"])
+                st.image("https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?q=80&w=1138&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
+                st.write("Halls:")
+                st.button(movie["halls"], key=f"{movie['title']}, {movie['title']}")
+                st.write("Showtimes:")
+                st.button(movie["showtimes"], key=f"{movie['title']}, {movie['showtimes']}")
