@@ -15,6 +15,7 @@ movies = [
         {"title": "-man", "desc": "-I am powerless", "showtimes": "3.00 PM"}]
 
 filters = st.selectbox("Filters", options=["All", "Showtimes"], index=0)
+cols = st.columns(len(showtimes_filter), border=True, vertical_alignment="center")
 if filters == "All":
     col1, col2, col3 = st.columns(3, border =True, vertical_alignment="center")
 
@@ -49,7 +50,6 @@ elif filters == "Showtimes":
     index = 0    
     if showtimes_filter:
         for movie in movies:
-                cols = st.columns(len(showtimes_filter), border=True, vertical_alignment="center")
                 if movies[index]["showtimes"] in showtimes_filter:
                         with cols[index]:
                                 st.subheader(movies[index]["title"])
