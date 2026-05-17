@@ -44,7 +44,7 @@ if filters == "All":
         st.write("Showtimes:")
         st.button(movies[2]["showtimes"], key="movie_2_all")
 elif filters == "Showtimes":
-    showtimes = [movies[0]["showtimes"], movies[1]["showtimes"], movies[2]["showtimes"]]
+    showtimes = [movie["showtimes"] for movie in movies if "showtimes" in movie]
     showtimes_filter = st.pills("", options=showtimes, default=showtimes, selection_mode="multi")
     index = 0    
     if showtimes_filter:
