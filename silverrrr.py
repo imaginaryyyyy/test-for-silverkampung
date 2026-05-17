@@ -66,7 +66,7 @@ elif filters == "Showtimes":
 
             st.write("Showtimes:")
             st.button(movies[1]["showtimes"])
-    if movies[2]["showtimes"] in showwtimes_filter: 
+    if movies[2]["showtimes"] in showtimes_filter: 
         col3 = st.columns(1, border =True, vertical_alignment="center")
         with col3:
             st.subheader(movies[2]["title"])
