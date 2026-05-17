@@ -14,7 +14,7 @@ st.title("Silver Kampong")
 movies = [
         {"title": "My Children", "desc": "A man who values his children", "showtimes": "9.00 AM"},
         {"title": "Mein Kampf", "desc": "Is this source reliable?", "showtimes": "12.00 PM"},
-        {"title": "-man", "desc": " "I am powerless" ", "showtimes": "3.00 PM"}]
+        {"title": "-man", "desc": "-I am powerless", "showtimes": "3.00 PM"}]
 
 filters = st.selectbox("Filters", options=["All", "Showtimes"], index=0)
 if filters == "All":
