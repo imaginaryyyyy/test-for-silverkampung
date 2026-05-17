@@ -11,36 +11,40 @@ Original file is located at
 import streamlit as st
 
 st.write("Silver Kampong")
-
 movies = [
         {"title": "My Children", "desc": "A man who values his children", "showtimes": "9.00 AM"},
-        {"title": "Mein Kampf", "desc": "Is this reliable as a source to his rise to power?", "showtimes": "12.00 PM"},
+        {"title": "Mein Kampf", "desc": "Is this source reliable?", "showtimes": "12.00 PM"},
         {"title": "Helloman", "desc": "Why am i doing this", "showtimes": "3.00 PM"}]
 
-col1, col2, col3 = st.columns(3, border =True, vertical_alignment="center")
+filters = st.menu_button("Filters", options=["All", "Showtimes"])
+if filters == "All":
+    col1, col2, col3 = st.columns(3, border =True, vertical_alignment="center")
 
-with col1:
-    st.subheader(movies[0]["title"])
-    st.caption(movies[0]["desc"])
-    st.image("https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?q=80&w=1138&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
+    with col1:
+        st.subheader(movies[0]["title"])
+        st.caption(movies[0]["desc"])
+        st.image("https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?q=80&w=1138&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
 
-    st.write("Showtimes:")
-    st.button(movies[0]["showtimes"])
-
-
-with col2:
-    st.subheader(movies[1]["title"])
-    st.caption(movies[1]["desc"])
-    st.image("https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?q=80&w=1138&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
-
-    st.write("Showtimes:")
-    st.button(movies[1]["showtimes"])
+        st.write("Showtimes:")
+        st.button(movies[0]["showtimes"])
 
 
-with col3:
-    st.subheader(movies[2]["title"])
-    st.caption(movies[2]["title"])
-    st.image("https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?q=80&w=1138&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
+    with col2:
+        st.subheader(movies[1]["title"])
+        st.caption(movies[1]["desc"])
+        st.image("https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?q=80&w=1138&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
 
-    st.write("Showtimes:")
-    st.button(movies[2]["showtimes"])
+        st.write("Showtimes:")
+        st.button(movies[1]["showtimes"])
+
+
+    with col3:
+        st.subheader(movies[2]["title"])
+        st.caption(movies[2]["desc"])
+        st.image("https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?q=80&w=1138&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
+
+        st.write("Showtimes:")
+        st.button(movies[2]["showtimes"])
+
+
+
