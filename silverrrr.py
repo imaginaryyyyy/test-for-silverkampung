@@ -50,7 +50,7 @@ elif filters == "Showtimes":
     if showtimes_filter:
         for movie in movies:
                 if movies[index]["showtimes"] in showtimes_filter:
-                        with col[index]:
+                        with cols[index]:
                                 st.subheader(movies[index]["title"])
                                 st.caption(movies[index]["desc"])
                                 st.image("https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?q=80&w=1138&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
