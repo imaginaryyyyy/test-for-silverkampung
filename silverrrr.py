@@ -10,11 +10,11 @@ import streamlit as st
 
 st.title("Silver Kampong")
 movies = [
-        {"title": "My Children", "desc": "A man who values his children", "showtimes": "9.00 AM"},
-        {"title": "Mein Kampf", "desc": "Is this source reliable?", "showtimes": "12.00 PM"},
-        {"title": "-man", "desc": "-I am powerless", "showtimes": "3.00 PM"}]
+        {"title": "My Children", "desc": "A man who values his children", "showtimes": "9.00 AM", "hall": "Cinema Hall 1"},
+        {"title": "Mein Kampf", "desc": "Is this source reliable?", "showtimes": "12.00 PM", "hall": "Cinema Hall 2"},
+        {"title": "-man", "desc": "-I am powerless", "showtimes": "3.00 PM", "hall": "Cinema Hall 3"}]
 
-filters = st.selectbox("Filters", options=["All", "Showtimes"], index=0)
+filters = st.selectbox("Filters", options=["All", "Showtimes", "Halls"], index=0)
 if filters == "All":
     col1, col2, col3 = st.columns(3, border=True, vertical_alignment="center")
 
@@ -58,3 +58,5 @@ elif filters == "Showtimes":
                 st.image("https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?q=80&w=1138&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
                 st.write("Showtimes:")
                 st.button(movie["showtimes"], key=f"{movie['title']}, {movie['showtimes']}")
+
+
