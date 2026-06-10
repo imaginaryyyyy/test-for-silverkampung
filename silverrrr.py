@@ -60,3 +60,16 @@ with metric_col1:
     st.metric("Movies", admin_details["movies"], delta=delta,border=True)
 with metric_col2:
     st.metric("Revenue", admin_details["revenue"], delta=delta, border=True)
+
+st.divider()
+
+if not st.session_state.show_form:
+  st.header("Your Movies:")
+  st.subheader(title)
+  st.caption(desc)
+  if photos:
+    st.image(photos)
+  st.write("Showtimes:")
+  st.link_button(showtimes or "Link", "https://www.gv.com.sg/")
+  st.write("Halls:")
+  st.link_button(halls or "Link", "https://www.gv.com.sg/")
