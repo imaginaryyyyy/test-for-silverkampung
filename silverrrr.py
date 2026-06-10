@@ -23,7 +23,6 @@ if st.button("New Movie"):
   photos = st.text_input("Image Link: ")
   showtimes = st.text_input("Showtimes: ")
   halls = st.text_input("Halls: ")
-  if left.button("Preview ")
   if st.button("Save Changes"):
     if title:
       movies[title] = title
