@@ -13,7 +13,7 @@ import json
 st.title("Silver Kampong Admin Terminal")
 
 file = st.file_uploader("Upload Movie Details JSON file", accept_multiple_file=False, type="json")
-if file and "loaded":
+if file and "loaded" not in st.session_state:
   st.session_state.movies = json.load(file)
   st.session_state.loaded = True
 
@@ -37,7 +37,7 @@ if st.button("New Movie"):
 if st.session_state.show:
   title = st.text_input("Title: ", key="title")
   desc = st.text_input("Description: ", key="desc")
-  photos = st.text_input("Image Link: ")
+  photos = st.text_input("Image Link: ", key="photos")
   showtimes = st.selectbox("Showtimes: ", ("9.00 AM", "12.00 PM", "3.00 PM"))
   showtimes = str(showtimes)
   halls = st.selectbox("Halls: ", ("Cinema Hall 1", "Cinema Hall 2", "Cinema Hall 3"))
