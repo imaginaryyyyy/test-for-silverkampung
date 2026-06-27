@@ -9,78 +9,76 @@ import numpy as np
 import time
 import json
 
-
 st.title("Silver Kampong Admin Terminal")
 
 if "movies" not in st.session_state:
-  st.session_state.movies = {}
+    st.session_state.movies = {}
 if "show" not in st.session_state:
-  st.session_state.show = False
+    st.session_state.show = False
 if "download" not in st.session_state:
-  st.session_state.download = False
+    st.session_state.download = False
 
 def export(movie_dict):
-  return json.dumps(movie_dict, indent=4) 
+    return json.dumps(movie_dict, indent=4) 
 
 file = st.file_uploader("Upload Movie Details JSON file", accept_multiple_file=False, type="json")
 if file and "loaded" not in st.session_state:
-  st.session_state.movies = json.load(file)
-  st.session_state.loaded = True
+    st.session_state.movies = json.load(file)
+    st.session_state.loaded = True
 
 admin_details = {"movies": "2", "revenue": "$2000"}
 
 if st.button("New Movie"):
-  st.session_state.show = not st.session_state.show
+    st.session_state.show = not st.session_state.show
 
 if st.session_state.show:
-  title = st.text_input("Title: ", key="title_input")
-  desc = st.text_input("Description: ", key="desc_input")
-  photos = st.text_input("Image Link: ", key="photos_input")
-  showtimes = st.selectbox("Showtimes: ", ("9.00 AM", "12.00 PM", "3.00 PM"))
-  showtimes = str(showtimes)
-  halls = st.selectbox("Halls: ", ("Cinema Hall 1", "Cinema Hall 2", "Cinema Hall 3"))
-  halls = str(halls)
+    title = st.text_input("Title: ", key="title_input")
+    desc = st.text_input("Description: ", key="desc_input")
+    photos = st.text_input("Image Link: ", key="photos_input")
+    showtimes = st.selectbox("Showtimes: ", ("9.00 AM", "12.00 PM", "3.00 PM"))
+    showtimes = str(showtimes)
+    halls = st.selectbox("Halls: ", ("Cinema Hall 1", "Cinema Hall 2", "Cinema Hall 3"))
+    halls = str(halls)
 
-  col1, col2 = st.columns(2)
-  with col1:
-    if st.button("Save Changes"):
-      if title:
-        st.session_state.movies[title] = {"desc": desc, "photos": photos, "showtimes": showtimes, "halls": halls}
-        st.session_state.json = export(st.session_state.movies)
-        st.session_state.download = True
-        st.success(f"'{title}' has been saved!")
-        time.sleep(1)
-        st.rerun()
+    col1, col2 = st.columns(2)
+    with col1:
+        if st.button("Save Changes"):
+            if title:
+                st.session_state.movies[title] = {"desc": desc, "photos": photos, "showtimes": showtimes, "halls": halls}
+                st.session_state.json = export(st.session_state.movies)
+                st.session_state.download = True
+                st.success(f"'{title}' has been saved!")
+                time.sleep(1)
+                st.rerun()
 
-  with col2:
-    if st.button("Preview Changes") and title:
-      st.subheader(title)
-      st.caption(desc)
-      if photos:
-        st.image(photos)
-        st.write("Showtimes:")
-        st.link_button(showtimes, "https://www.gv.com.sg/")
-        st.write("Halls:")
-        st.link_button(halls, "https://www.gv.com.sg/")
-
+    with col2:
+        if st.button("Preview Changes") and title:
+            st.subheader(title)
+            st.caption(desc)
+            if photos:
+                st.image(photos)
+                st.write("Showtimes:")
+                st.link_button(showtimes, "https://www.gv.com.sg/")
+                st.write("Halls:")
+                st.link_button(halls, "https://www.gv.com.sg/")
 
 if st.session_state.download:
-  st.download_button(label="Download JSON", data=st.session_state.json, file_name="movie_details.json", mime="text/json", icon=":material/download:",)
-  st.divider()
+    st.download_button(label="Download JSON", data=st.session_state.json, file_name="movie_details.json", mime="text/json", icon=":material/download:")
+    st.divider()
 
 metric_col1, metric_col2 = st.columns(2)
 with metric_col1:
-  st.metric("Movies", admin_details["movies"], border=True)
+    st.metric("Movies", admin_details["movies"], border=True)
 with metric_col2:
-  st.metric("Revenue", admin_details["revenue"], border=True)
+    st.metric("Revenue", admin_details["revenue"], border=True)
 
 st.subheader("Your Movies")
 for title, details in st.session_state.movies.items():
-  with st.expander(title):
-    st.header(f"{title}")
-    st.caption(details.get("desc"))
-    image = details.get("photos")
-    if image:
-      st.image(image)
-    st.write(f"Hall: {details.get('halls')}")
-    st.write(f"Showtime: {details.get('showtimes')}")
+    with st.expander(title):
+        st.header(f"{title}")
+        st.caption(details.get("desc"))
+        image = details.get("photos")
+        if image:
+            st.image(image)
+        st.write(f"Hall: {details.get('halls')}")
+        st.write(f"Showtime: {details.get('showtimes')}")
