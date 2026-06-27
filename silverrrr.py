@@ -65,7 +65,6 @@ if st.session_state.show:
         st.write("Halls:")
         st.link_button(halls, "https://www.gv.com.sg/")
 
-st.divider()
 
 if st.session_state.download:
   st.download_button(label="Download JSON", data=st.session_state.json, file_name="movie_details.json", mime="text/json", icon=":material/download:",)
