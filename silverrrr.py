@@ -18,7 +18,7 @@ if file and "loaded" not in st.session_state:
   st.session_state.loaded = True
 
 
-def export(dict):
+def export(movie_dict):
   return json.dumps(dict, indent=4)
 
 if "movies" not in st.session_state:
