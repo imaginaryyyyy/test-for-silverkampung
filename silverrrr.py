@@ -67,7 +67,7 @@ if st.session_state.show:
 st.divider()
 
 if st.session_state.download:
-  st.download_button(label="Download JSON", data=csv, file_name="movie_details.json", mime="text/json", icon=":material/download:",)
+  st.download_button(label="Download JSON", data=json, file_name="movie_details.json", mime="text/json", icon=":material/download:",)
   st.divider
 
 metric_col1, metric_col2 = st.columns(2)
@@ -75,4 +75,3 @@ with metric_col1:
   st.metric("Movies", admin_details["movies"], border=True)
 with metric_col2:
   st.metric("Revenue", admin_details["revenue"], border=True)
-
