@@ -49,7 +49,6 @@ if st.session_state.show:
         st.session_state.json = export(st.session_state.movies)
         st.session_state.download = True
         st.success(f"'{title}' has been saved!")
-        export(st.session_state.json)
         time.sleep(1)
         st.rerun()
 
@@ -67,8 +66,8 @@ if st.session_state.show:
 st.divider()
 
 if st.session_state.download:
-  st.download_button(label="Download JSON", data=json, file_name="movie_details.json", mime="text/json", icon=":material/download:",)
-  st.divider
+  st.download_button(label="Download JSON", data=st.session_state.json, file_name="movie_details.json", mime="text/json", icon=":material/download:",)
+  st.divider()
 
 metric_col1, metric_col2 = st.columns(2)
 with metric_col1:
