@@ -81,7 +81,7 @@ for title, details in st.session_state.movies.items():
     st.header(f"{title}")
     st.caption(details.get("desc"))
     image = details.get("photos")
-    if image
+    if image:
       st.image(image)
     st.write(f"Hall: {details.get('halls')}")
     st.write(f"Showtime: {details.get('showtimes')}")
