@@ -38,8 +38,10 @@ if st.session_state.show:
   title = st.text_input("Title: ")
   desc = st.text_input("Description: ")
   photos = st.text_input("Image Link: ")
-  showtimes = st.text_input("Showtimes: ")
-  halls = st.text_input("Halls: ")
+  showtimes = st.selectbox("Showtimes: ", ("9.00 AM", "12.00 PM", "3.00 PM"))
+  showtimes = str(showtimes)
+  halls = st.selectbox("Halls: ", ("Cinema Hall 1", "Cinema Hall 2", "Cinema Hall 3"))
+  halls = str(halls)
 
   col1, col2 = st.columns(2)
   with col1:
@@ -74,3 +76,4 @@ with metric_col1:
   st.metric("Movies", admin_details["movies"], border=True)
 with metric_col2:
   st.metric("Revenue", admin_details["revenue"], border=True)
+
