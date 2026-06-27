@@ -12,15 +12,6 @@ import json
 
 st.title("Silver Kampong Admin Terminal")
 
-file = st.file_uploader("Upload Movie Details JSON file", accept_multiple_file=False, type="json")
-if file and "loaded" not in st.session_state:
-  st.session_state.movies = json.load(file)
-  st.session_state.loaded = True
-
-
-def export(movie_dict):
-  return json.dumps(movie_dict, indent=4)
-
 if "movies" not in st.session_state:
   st.session_state.movies = {}
 if "show" not in st.session_state:
@@ -28,6 +19,13 @@ if "show" not in st.session_state:
 if "download" not in st.session_state:
   st.session_state.download = False
 
+def export(movie_dict):
+  return json.dumps(movie_dict, indent=4) 
+
+file = st.file_uploader("Upload Movie Details JSON file", accept_multiple_file=False, type="json")
+if file and "loaded" not in st.session_state:
+  st.session_state.movies = json.load(file)
+  st.session_state.loaded = True
 
 admin_details = {"movies": "2", "revenue": "$2000"}
 
