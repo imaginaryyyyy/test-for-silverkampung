@@ -35,9 +35,9 @@ if st.button("New Movie"):
   st.session_state.show = not st.session_state.show
 
 if st.session_state.show:
-  title = st.text_input("Title: ", key="title")
-  desc = st.text_input("Description: ", key="desc")
-  photos = st.text_input("Image Link: ", key="photos")
+  title = st.text_input("Title: ", key="title_input")
+  desc = st.text_input("Description: ", key="desc_input")
+  photos = st.text_input("Image Link: ", key="photos_input")
   showtimes = st.selectbox("Showtimes: ", ("9.00 AM", "12.00 PM", "3.00 PM"))
   showtimes = str(showtimes)
   halls = st.selectbox("Halls: ", ("Cinema Hall 1", "Cinema Hall 2", "Cinema Hall 3"))
