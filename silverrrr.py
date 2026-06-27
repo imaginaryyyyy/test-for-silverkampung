@@ -18,12 +18,7 @@ if file:
 
 
 def export(dict):
-  json_string = json.dumps(dict, indent=4)
-  return json_string
-  create_file = open("movie_details.json", "x")
-  with open("movie_details.json", "w") as f:
-    json.dump(dict, f)
-  st.download_button(label="Download JSON", data=json, file_name="movie_details.json", mime="text/json", icon=":material/download:",)
+  return json.dumps(dict, indent=4)
 
 if "movies" not in st.session_state:
   st.session_state.movies = {}
@@ -87,5 +82,5 @@ for title, details in st.session_state.movies.items():
     st.caption(details.get("desc"))
     image = details.get("photos")
     st.image(image)
-    st.write(f"Hall: {details.get("halls")}")
-    st.write(f"Showtime: {details.get("showtimes")}")
+    st.write(f"Hall: {details.get('halls')}")
+    st.write(f"Showtime: {details.get('showtimes')}")
