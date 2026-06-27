@@ -13,6 +13,11 @@ import json
 
 st.title("Silver Kampong Admin Terminal")
 
+file = st.file_uploader("Upload Movie Details JSON file", accept_multiple_file=False, type="json")
+if file:
+  st.session_state.movies = json.load(file)
+
+
 def export(dict):
   json_string = json.dumps(dict, indent=4)
   return json_string
@@ -76,3 +81,12 @@ with metric_col1:
 with metric_col2:
   st.metric("Revenue", admin_details["revenue"], border=True)
 
+st.subheader("Your Movies")
+for title, details in st.session_state.movies.items():
+  with st.expander(title):
+    st.header(f"{title}")
+    st.caption(details.get("desc"))
+    image = details.get("photos")
+    st.image(image)
+    st.write(f"Hall: {details.get("halls")}")
+    st.write(f"Showtime: {details.get("shwotimes")}")
