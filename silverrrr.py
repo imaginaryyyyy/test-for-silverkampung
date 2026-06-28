@@ -49,12 +49,6 @@ with metric_col1:
 with metric_col2:
   st.metric("Revenue", "$0", border=True)
 
-metric_col1, metric_col2 = st.columns(2)
-with metric_col1:
-  st.metric("Movies", admin_details["movies"], border=True)
-with metric_col2:
-  st.metric("Revenue", admin_details["revenue"], border=True)
-
 if st.button("New Movie"):
   st.session_state.show = not st.session_state.show
 
