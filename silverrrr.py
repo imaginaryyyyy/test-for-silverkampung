@@ -38,6 +38,8 @@ file = st.file_uploader("Existing JSON Movie Details File", accept_multiple_file
 if file and "loaded" not in st.session_state:
   st.session_state.movies = json.load(file)
   st.session_state.loaded = True
+if file not in st.session_state:
+  st.session_state.loaded = False
 
 movie_count = 0
 for title in st.session_state.movies:
@@ -69,8 +71,11 @@ if st.session_state.show:
         st.session_state.movies[title] = movie_details
         st.session_state.json = export(st.session_state.movies)
         st.session_state.download = True
-        WriteToJson(movie_file, movie_details, title)
-        st.success(f"'{title}' has been saved!")
+        if st.session_state.loaded = True:
+          WriteToJson(movie_file, movie_details, title)
+          st.success(f"'{title}' has been saved!")
+        else:
+          st.warning("A file is not loaded. Your movie has not been saved.", icon="⚠️")
         time.sleep(1)
         st.rerun()
 
