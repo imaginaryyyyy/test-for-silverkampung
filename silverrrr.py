@@ -10,6 +10,16 @@ import time
 import json
 
 
+def WriteToJson(fp:str, value, *locations):
+  with open(fp,"r+") as f:
+    myFile = json.load(f)
+    reduce(operator.getitem, locations[:-1], myFile)[locations[-1]] = value
+    f.seek(0)
+    json.dump(myFile, f, indent = 4)
+    f.truncate()
+
+movie_file = "movie_details.json"
+
 st.title("Silver Kampong Admin Terminal")
 
 if "movies" not in st.session_state:
@@ -51,9 +61,10 @@ if st.session_state.show:
   with col1:
     if st.button("Save Changes"):
       if title:
-        st.session_state.movies[title] = {"desc": desc, "photos": photos, "showtimes": showtimes, "halls": halls}
-        st.session_state.json = export(st.session_state.movies)
+        movie_details = {"desc": desc, "photos": photos, "showtimes": showtimes, "halls": halls}
+        st.session_state.movies[title] = movie_details
         st.session_state.download = True
+        WriteToJson(movie_file, movie_data, title)
         st.success(f"'{title}' has been saved!")
         time.sleep(1)
         st.rerun()
