@@ -71,7 +71,7 @@ if st.session_state.show:
         st.session_state.movies[title] = movie_details
         st.session_state.json = export(st.session_state.movies)
         st.session_state.download = True
-        if st.session_state.loaded = True:
+        if st.session_state.loaded == True:
           WriteToJson(movie_file, movie_details, title)
           st.success(f"'{title}' has been saved!")
         else:
