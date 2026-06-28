@@ -63,6 +63,7 @@ if st.session_state.show:
       if title:
         movie_details = {"desc": desc, "photos": photos, "showtimes": showtimes, "halls": halls}
         st.session_state.movies[title] = movie_details
+        st.session_state.json = exporrt(st.session_state.movies)
         st.session_state.download = True
         WriteToJson(movie_file, movie_details, title)
         st.success(f"'{title}' has been saved!")
