@@ -29,6 +29,12 @@ if file and "loaded" not in st.session_state:
 
 admin_details = {"movies": "2", "revenue": "$2000"}
 
+metric_col1, metric_col2 = st.columns(2)
+with metric_col1:
+  st.metric("Movies", admin_details["movies"], border=True)
+with metric_col2:
+  st.metric("Revenue", admin_details["revenue"], border=True)
+
 if st.button("New Movie"):
   st.session_state.show = not st.session_state.show
 
@@ -67,12 +73,6 @@ if st.session_state.show:
 if st.session_state.download:
   st.download_button(label="Download JSON", data=st.session_state.json, file_name="movie_details.json", mime="text/json", icon=":material/download:",)
   st.divider()
-
-metric_col1, metric_col2 = st.columns(2)
-with metric_col1:
-  st.metric("Movies", admin_details["movies"], border=True)
-with metric_col2:
-  st.metric("Revenue", admin_details["revenue"], border=True)
 
 st.subheader("Your Movies")
 for title, details in st.session_state.movies.items():
