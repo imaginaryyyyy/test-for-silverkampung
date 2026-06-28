@@ -8,6 +8,8 @@ import streamlit as st
 import numpy as np
 import time
 import json
+from functools import reduce
+import operator
 
 
 def WriteToJson(fp:str, value, *locations):
