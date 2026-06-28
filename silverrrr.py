@@ -39,7 +39,15 @@ if file and "loaded" not in st.session_state:
   st.session_state.movies = json.load(file)
   st.session_state.loaded = True
 
-admin_details = {"movies": "2", "revenue": "$2000"}
+movie_count = 0
+for title in st.session_state.movies:
+  movie_count += 1
+
+metric_col1, metric_col2 = st.columns(2)
+with metric_col1:
+  st.metric("Movies", movie_count, border=True)
+with metric_col2:
+  st.metric("Revenue", "$0", border=True)
 
 metric_col1, metric_col2 = st.columns(2)
 with metric_col1:
