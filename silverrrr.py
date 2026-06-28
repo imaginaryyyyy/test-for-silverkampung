@@ -74,9 +74,10 @@ if st.session_state.show:
         if st.session_state.loaded == True:
           WriteToJson(movie_file, movie_details, title)
           st.success(f"'{title}' has been saved!")
+          time.sleep(1)
         else:
           st.warning("A file is not loaded. Your movie has not been saved.", icon="⚠️")
-        time.sleep(1)
+          time.sleep(3)
         st.rerun()
 
   with col2:
