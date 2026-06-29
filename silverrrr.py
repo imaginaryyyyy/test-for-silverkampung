@@ -42,7 +42,7 @@ File = st.file_uploader("Existing JSON Movie Details File", accept_multiple_file
 if File and "loaded" not in st.session_state:
   st.session_state.movies = json.loads(File)
   st.session_state.loaded = True
-elif file and "loaded" in st.session_state
+elif File and "loaded" in st.session_state:
   st.session_state.movies = json.load(File)
 if File not in st.session_state:
   st.session_state.loaded = False
