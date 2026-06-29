@@ -86,15 +86,15 @@ if st.session_state.show:
   with col2:
     if st.button("Preview Changes"):
       st.session_state.show_preview_changes = not st.session_state.show_preview_changes
-        if st.session_state.show_preview_changes = True and title:
-          st.subheader(title)
-          st.caption(desc)
-        if photos:
-          st.image(photos)
-          st.write("Showtimes:")
-          st.link_button(showtimes, "https://www.gv.com.sg/")
-          st.write("Halls:")
-          st.link_button(halls, "https://www.gv.com.sg/")
+      if st.session_state.show_preview_changes = True and title:
+        st.subheader(title)
+        st.caption(desc)
+      if photos:
+        st.image(photos)
+        st.write("Showtimes:")
+        st.link_button(showtimes, "https://www.gv.com.sg/")
+        st.write("Halls:")
+        st.link_button(halls, "https://www.gv.com.sg/")
 
 
 if st.session_state.download:
