@@ -29,12 +29,14 @@ if "show" not in st.session_state:
   st.session_state.show = False
 if "download" not in st.session_state:
   st.session_state.download = False
+if "loaded" not in st.session_state:
+  st.session_state.loaded = False
 
 def export(movie_dict):
   return json.dumps(movie_dict, indent=4)
 
 File = st.file_uploader("Existing JSON Movie Details File", accept_multiple_files=False, type="json")
-if File and "loaded" not in st.session_state:
+if File and "loaded" in st.session_state:
   st.session_state.movies = json.load(File)
   st.session_state.loaded = True
 elif File not in st.session_state:
