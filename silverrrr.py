@@ -36,9 +36,9 @@ if "download" not in st.session_state:
 #Dump the movie dictionary
 def export(movie_dict):
   if File and "loaded" not in st.session_state:
-    return json.dumps(movie_dict, indent=4)
-  elif File and "loaded" in st.session_state:
     return json.dump(movie_dict, indent=4)
+  elif File and "loaded" in st.session_state:
+    return json.dumps(movie_dict, indent=4)
 
 File = st.file_uploader("Existing JSON Movie Details File", accept_multiple_files=False, type="json")
 if File and "loaded" not in st.session_state:
