@@ -10,7 +10,7 @@ import json
 from functools import reduce
 import operator
 
-#Kaiser function
+
 def WriteToJson(fp:str, value, *locations):
   with open(fp,"r+") as f:
     myFile = json.load(f)
@@ -19,12 +19,10 @@ def WriteToJson(fp:str, value, *locations):
     json.dump(myFile, f, indent = 4)
     f.truncate()
 
-#Naming the movie json file
-movie_file = "movie_details.json"
+movie_file = "file.json"
 
 st.title("Silver Kampong Admin Terminal")
 
-#Session state so that the widgets don't disappear
 if "movies" not in st.session_state:
   st.session_state.movies = {}
 if "show" not in st.session_state:
@@ -32,25 +30,20 @@ if "show" not in st.session_state:
 if "download" not in st.session_state:
   st.session_state.download = False
 
-#Dump the movie dictionary
 def export(movie_dict):
-  return json.dumps(movie_dict, indent=4)
+  return json.dump(movie_dict, indent=4)
 
 File = st.file_uploader("Existing JSON Movie Details File", accept_multiple_files=False, type="json")
 if File and "loaded" not in st.session_state:
-  st.session_state.movies = json.loads(File)
-  st.session_state.loaded = True
-elif File and "loaded" in st.session_state:
   st.session_state.movies = json.load(File)
+  st.session_state.loaded = True
 if File not in st.session_state:
   st.session_state.loaded = False
 
-#For movie count stat
 movie_count = 0
 for title in st.session_state.movies:
   movie_count += 1
 
-#Metrics, movie count is true, revenue is just $0 until revenue implemented
 metric_col1, metric_col2 = st.columns(2)
 with metric_col1:
   st.metric("Movies", movie_count, border=True)
