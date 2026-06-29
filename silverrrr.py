@@ -25,8 +25,10 @@ st.title("Silver Kampong Admin Terminal")
 
 if "movies" not in st.session_state:
   st.session_state.movies = {}
-if "show" not in st.session_state:
-  st.session_state.show = False
+if "show_new_movie" not in st.session_state:
+  st.session_state.show_new_movie = False
+if "show_preview_changes" not in st.session_state:
+  st.session_state.show_preview_changes = False
 if "download" not in st.session_state:
   st.session_state.download = False
 if "loaded" not in st.session_state:
@@ -53,7 +55,7 @@ with metric_col2:
   st.metric("Revenue", "$0", border=True)
 
 if st.button("New Movie"):
-  st.session_state.show = not st.session_state.show
+  st.session_state.show_new_movie = not st.session_state.show_new_movie
 
 if st.session_state.show:
   title = st.text_input("Title: ", key="title_input")
@@ -73,7 +75,7 @@ if st.session_state.show:
         st.session_state.json = export(st.session_state.movies)
         st.session_state.download = True
         if st.session_state.loaded == True:
-          WriteToJson(File, movie_details, title)
+          WriteToJson(movie_file, movie_details, title)
           st.success(f"'{title}' has been saved!")
           time.sleep(1)
         else:
@@ -82,15 +84,17 @@ if st.session_state.show:
         st.rerun()
 
   with col2:
-    if st.button("Preview Changes") and title:
-      st.subheader(title)
-      st.caption(desc)
-      if photos:
-        st.image(photos)
-        st.write("Showtimes:")
-        st.link_button(showtimes, "https://www.gv.com.sg/")
-        st.write("Halls:")
-        st.link_button(halls, "https://www.gv.com.sg/")
+    if st.button("Preview Changes"):
+      st.session_state.show_preview_changes = not st.session_state.show_preview_changes
+        if st.session_state.show_preview_changes = True and title:
+          st.subheader(title)
+          st.caption(desc)
+        if photos:
+          st.image(photos)
+          st.write("Showtimes:")
+          st.link_button(showtimes, "https://www.gv.com.sg/")
+          st.write("Halls:")
+          st.link_button(halls, "https://www.gv.com.sg/")
 
 
 if st.session_state.download:
