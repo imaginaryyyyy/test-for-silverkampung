@@ -85,8 +85,8 @@ if st.session_state.show:
 
   with col2:
     if st.button("Preview Changes"):
-      st.session_state.show_preview_changes == not st.session_state.show_preview_changes
-      if st.session_state.show_preview_changes = True and title:
+      st.session_state.show_preview_changes = not st.session_state.show_preview_changes
+      if st.session_state.show_preview_changes == True and title:
         st.subheader(title)
         st.caption(desc)
       if photos:
