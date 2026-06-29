@@ -89,12 +89,12 @@ if st.session_state.show:
       if st.session_state.show_preview_changes == True and title:
         st.subheader(title)
         st.caption(desc)
-      if photos:
-        st.image(photos)
-        st.write("Showtimes:")
-        st.link_button(showtimes, "https://www.gv.com.sg/")
-        st.write("Halls:")
-        st.link_button(halls, "https://www.gv.com.sg/")
+        if photos:
+          st.image(photos)
+          st.write("Showtimes:")
+          st.link_button(showtimes, "https://www.gv.com.sg/")
+          st.write("Halls:")
+          st.link_button(halls, "https://www.gv.com.sg/")
 
 
 if st.session_state.download:
