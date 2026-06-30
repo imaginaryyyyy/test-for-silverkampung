@@ -1,6 +1,6 @@
 import streamlit as st
 
-if "logged_in" is not in st.session_state:
+if "logged_in" not in st.session_state:
     st.session_state.logged_in = False
 
 col1, col2, col3 = st.columns(3)
