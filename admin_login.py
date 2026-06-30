@@ -1,7 +1,9 @@
-import streamlit as st
+iimport streamlit as st
 
 if "logged_in" not in st.session_state:
     st.session_state.logged_in = False
+
+Show_Pages()
 
 login_page = st.Page("admin_login.py", title="Login")
 admin_panel = st.Page("pages/silverrrr.py", title="Admin Panel")
