@@ -10,11 +10,11 @@ def Show_Pages():
   if st.session_state.logged_in == True:
     pages = [login_page, admin_panel]
     show_page = st.navigation(pages)
-    show_page.run
+    show_page.run()
   else:
     pages = [login_page]
     show_page = st.navigation(pages)
-    show_page.run
+    show_page.run()
 
 Show_Pages()
 
