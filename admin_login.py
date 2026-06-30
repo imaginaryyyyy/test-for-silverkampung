@@ -1,5 +1,8 @@
 import streamlit as st
 
+if "logged_in" is not in st.session_state:
+    st.session_state.logged_in = False
+
 col1, col2, col3 = st.columns(3)
 with col2:
     st.title("Admin Terminal")
@@ -14,6 +17,7 @@ with col3:
 if user_name and password and login:
     #Connect to backend for real authentication
     if user_name == "mosskin-8" and password == "moss-whale-66": #Testing purposes only, the file.json right now does not include the details
+        st.session_state.logged_in = True
         st.success('Successfully login!', icon="✅")
         st.switch_page("pages/silverrrr.py") #My own repo, change later
     else:
