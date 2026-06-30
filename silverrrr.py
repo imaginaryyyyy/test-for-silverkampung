@@ -16,7 +16,7 @@ def WriteToJson(fp:str, value, *locations):
     myFile = json.load(f)
     reduce(operator.getitem, locations[:-1], myFile)[locations[-1]] = value
     f.seek(0)
-    json.dump(myFile, f, indent = 4)
+    json.dumps(myFile, f, indent = 4)
     f.truncate()
 
 movie_file = "file.json"
