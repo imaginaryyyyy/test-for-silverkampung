@@ -3,6 +3,9 @@ import streamlit as st
 if "logged_in" not in st.session_state:
     st.session_state.logged_in = False
 
+login_page = st.Page("admin_login.py", title="Login")
+admin_panel = st.Page("pages/silverrrr.py", title="Admin Panel")
+
 def Show_Pages():
   if st.session_state.logged_in == True:
     pages = [login_page, admin_panel]
@@ -15,8 +18,6 @@ def Show_Pages():
 
 Show_Pages()
 
-login_page = st.Page("admin_login.py", title="Login")
-admin_panel = st.Page("pages/silverrrr.py", title="Admin Panel")
 
 col1, col2, col3 = st.columns(3)
 with col2:
