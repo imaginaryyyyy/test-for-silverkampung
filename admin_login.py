@@ -7,7 +7,7 @@ login_page = st.Page("admin_login.py", title="Login")
 admin_panel = st.Page("silverrrr.py", title="Admin Panel")
 
 def Show_Pages():
-  if st.session_state.logged_in = True
+  if st.session_state.logged_in == True:
     pages = [login_page, admin_panel]
     show_page = st.navigation(pages)
     show_page.run
