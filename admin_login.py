@@ -3,7 +3,6 @@ import streamlit as st
 if "logged_in" not in st.session_state:
     st.session_state.logged_in = False
 
-
 col1, col2, col3 = st.columns(3)
 with col2:
     st.title(":grey[Silver Kampong Admin Terminal]")
