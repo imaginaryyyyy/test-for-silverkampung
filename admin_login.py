@@ -5,20 +5,21 @@ if "logged_in" not in st.session_state:
 
 col1, col2, col3 = st.columns(3)
 with col2:
-    st.title("Admin Terminal")
+    st.title(":grey[Silver Kampong Admin Terminal]")
+    st.write("[insert slogan]")
     container = st.container(border=True)
-    user_name = container.text_input("Username:")
+    user_name = container.text_input("**Username:**")
     container.write("")
-    password = container.text_input("Password:")
+    password = container.text_input("**Password:**")
 
 with col3:
-    login = container.button("Login")
+    login = container.button(":red[**Login**]")
 
 if user_name and password and login:
     #Connect to backend for real authentication
     if user_name == "mosskin-8" and password == "moss-whale-66": #Testing purposes only, the file.json right now does not include the details
         st.session_state.logged_in = True
-        st.success('Successfully login!', icon="✅")
+        st.success('Successful login!', icon="✅")
         st.switch_page("pages/silverrrr.py") #My own repo, change later
     else:
         st.error(f"Unsuccessful login", icon="🚨")
