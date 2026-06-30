@@ -12,7 +12,7 @@ def Show_Pages():
     show_page = st.navigation(pages)
     show_page.run
   else:
-    pages = [home_page]
+    pages = [login_page]
     show_page = st.navigation(pages)
     show_page.run
 
