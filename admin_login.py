@@ -16,7 +16,6 @@ def Show_Pages():
     show_page = st.navigation(pages)
     show_page.run()
 
-Show_Pages()
 
 
 col1, col2, col3 = st.columns(3)
@@ -36,9 +35,9 @@ if user_name and password and login:
     if user_name == "mosskin-8" and password == "moss-whale-66": #Testing purposes only, the file.json right now does not include the details
         st.session_state.logged_in = True
         st.success('Successful login!', icon="✅")
-        Show_Pages()
 
     else:
         st.error(f"Unsuccessful login", icon="🚨")
         st.error('Your Username or password is incorrect', icon="🚨")
-        Show_Pages()
+
+Show_Pages()
