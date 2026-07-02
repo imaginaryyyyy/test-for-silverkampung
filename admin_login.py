@@ -3,6 +3,18 @@ import streamlit as st
 if "logged_in" not in st.session_state:
     st.session_state.logged_in = False
 
+login_page = st.Page("admin_login.py", title="Login")
+admin_panel = st.Page("show_pages/admin_panel.py", title="Admin Panel")
+
+if st.session_state.logged_in:
+  pages = [admin_panel]
+else:
+  pages = [login_page]
+
+Page = st.navigation(pages)
+Page.run()
+
+
 col1, col2, col3 = st.columns(3)
 with col2:
     st.title(":grey[Silver Kampong Admin Terminal]")
@@ -20,6 +32,7 @@ if user_name and password and login:
     if user_name == "mosskin-8" and password == "moss-whale-66": #Testing purposes only, the file.json right now does not include the details
         st.session_state.logged_in = True
         st.success('Successful login!', icon="✅")
+        st.rerun()
 
     else:
         st.error(f"Unsuccessful login", icon="🚨")
