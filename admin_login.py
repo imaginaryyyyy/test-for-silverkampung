@@ -7,7 +7,7 @@ with col2:
     with st.form("login_form", border=True):
       user_name = st.text_input("**Username:**", key="username")
       st.write("")
-      password = st.text_input("**Password:**", key="password")
+      password = st.text_input("**Password:**", key="password", type="password")
       login = st.form_submit_button(":red[**Login**]")
   
 if login:
