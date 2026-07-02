@@ -11,8 +11,8 @@ if st.session_state.logged_in:
 else:
   pages = [login_page]
 
-Page = st.navigation(pages)
-Page.run()
+page = st.navigation(pages)
+page.run()
 
 
 col1, col2, col3 = st.columns(3)
