@@ -18,7 +18,7 @@ else:
             password = st.text_input("**Password**", type="password")
             login = st.form_submit_button(":red[**Login**]")
     if login:
-        if user_name == "mosskin-8" and password == "moss-whale-66"
+        if user_name == "mosskin-8" and password == "moss-whale-66":
         st.session_statte.logged_in = True
         st.rerun()
     else:
