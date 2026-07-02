@@ -52,7 +52,7 @@ if st.button("New Movie"):
   st.session_state.show_new_movie = not st.session_state.show_new_movie
 
 if st.session_state.show_new_movie:
-  with st.form("new_movie_details")
+  with st.form("new_movie_details"):
     title = st.text_input("Title: ", key="title_input")
     desc = st.text_input("Description: ", key="desc_input")
     photos = st.text_input("Image Link: ", key="photos_input")
