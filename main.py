@@ -1,5 +1,7 @@
 import streamlit as st
 
+st.write("Current Login State:", st.session_state.to_dict())
+
 if "logged_in" not in st.session_state:
     st.session_state.logged_in = False
 
