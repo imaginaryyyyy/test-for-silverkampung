@@ -52,18 +52,17 @@ if st.button("New Movie"):
   st.session_state.show_new_movie = not st.session_state.show_new_movie
 
 if st.session_state.show_new_movie:
-  title = st.text_input("Title: ", key="title_input")
-  desc = st.text_input("Description: ", key="desc_input")
-  photos = st.text_input("Image Link: ", key="photos_input")
-  showtimes = st.selectbox("Showtimes: ", ("9.00 AM", "12.00 PM", "3.00 PM"))
-  showtimes = str(showtimes)
-  halls = st.selectbox("Halls: ", ("Cinema Hall 1", "Cinema Hall 2", "Cinema Hall 3"))
-  halls = str(halls)
-
-  col1, col2 = st.columns(2)
-  with col1:
-    if st.button("Save Changes"):
-      if title:
+  with st.form("new_movie_details")
+    title = st.text_input("Title: ", key="title_input")
+    desc = st.text_input("Description: ", key="desc_input")
+    photos = st.text_input("Image Link: ", key="photos_input")
+    showtimes = st.selectbox("Showtimes: ", ("9.00 AM", "12.00 PM", "3.00 PM"))
+    showtimes = str(showtimes)
+    halls = st.selectbox("Halls: ", ("Cinema Hall 1", "Cinema Hall 2", "Cinema Hall 3"))
+    halls = str(halls)
+    saved = st.form_sumbit_button("Save Changes")
+  if saved:
+    if title:
         movie_details = {"desc": desc, "photos": photos, "showtimes": showtimes, "halls": halls}
         st.session_state.movies[title] = movie_details
         st.session_state.json = export(st.session_state.movies)
@@ -76,19 +75,6 @@ if st.session_state.show_new_movie:
           st.warning("A file is not loaded. Your movie has not been saved.", icon="⚠️")
           time.sleep(3)
         st.rerun()
-
-  with col2:
-    if st.button("Preview Changes"):
-      st.session_state.show_preview_changes = not st.session_state.show_preview_changes
-      if st.session_state.show_preview_changes == True and title:
-        st.subheader(title)
-        st.caption(desc)
-        if photos:
-          st.image(photos)
-          st.write("Showtimes:")
-          st.link_button(showtimes, "https://www.gv.com.sg/")
-          st.write("Halls:")
-          st.link_button(halls, "https://www.gv.com.sg/")
 
 
 if st.session_state.download:
