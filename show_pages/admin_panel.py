@@ -60,7 +60,7 @@ if st.session_state.show_new_movie:
     showtimes = str(showtimes)
     halls = st.selectbox("Halls: ", ("Cinema Hall 1", "Cinema Hall 2", "Cinema Hall 3"))
     halls = str(halls)
-    saved = st.form_sumbit_button("Save Changes")
+    saved = st.form_submit_button("Save Changes")
   if saved:
     if title:
         movie_details = {"desc": desc, "photos": photos, "showtimes": showtimes, "halls": halls}
