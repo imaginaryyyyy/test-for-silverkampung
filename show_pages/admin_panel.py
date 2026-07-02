@@ -7,7 +7,10 @@ import operator
 
 def WriteToJson(fp:str, value, *locations):
   with open(fp,"r+") as f:
-    myFile = json.load(f)
+    try:
+      myFile = json.load(f)
+    except ValueError:
+        myFile = {}
     reduce(operator.getitem, locations[:-1], myFile)[locations[-1]] = value
     f.seek(0)
     json.dump(myFile, f, indent = 4)
