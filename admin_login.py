@@ -17,7 +17,7 @@ if login:
     if st.session_state.username == "mosskin-8" and st.session_state.password == "moss-whale-66": #Testing purposes only, the file.json right now does not include the details
         st.session_state.logged_in = True
         st.success('Successful login!', icon="✅")
-        st.rerun()
+        st.switch_page("show_pages/admin_panel.py")
 
     else:
         st.error(f"Unsuccessful login", icon="🚨")
