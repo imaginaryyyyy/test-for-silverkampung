@@ -33,7 +33,7 @@ def export(movie_dict):
 
 myFile = st.file_uploader("Existing JSON Movie Details File", accept_multiple_files=False, type="json")
 if myFile and st.session_state.loaded != True:
-  st.session_state.movies = json.load(File)
+  st.session_state.movies = json.load(myFile)
   st.session_state.loaded = True
 elif myFile not in st.session_state:
   st.session_state.loaded = False
