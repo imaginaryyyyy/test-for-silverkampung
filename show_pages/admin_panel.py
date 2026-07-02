@@ -31,11 +31,11 @@ if "loaded" not in st.session_state:
 def export(movie_dict):
   return json.dumps(movie_dict, indent=4)
 
-File = st.file_uploader("Existing JSON Movie Details File", accept_multiple_files=False, type="json")
-if File and st.session_state.loaded != True:
+myFile = st.file_uploader("Existing JSON Movie Details File", accept_multiple_files=False, type="json")
+if myFile and st.session_state.loaded != True:
   st.session_state.movies = json.load(File)
   st.session_state.loaded = True
-elif File not in st.session_state:
+elif myFile not in st.session_state:
   st.session_state.loaded = False
 
 movie_count = 0
@@ -68,7 +68,7 @@ if st.session_state.show_new_movie:
         st.session_state.json = export(st.session_state.movies)
         st.session_state.download = True
         if st.session_state.loaded == True:
-          WriteToJson(movie_file, movie_details, title)
+          WriteToJson(myFile, movie_details, title)
           st.success(f"'{title}' has been saved!")
           time.sleep(1)
         else:
