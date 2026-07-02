@@ -7,10 +7,7 @@ import operator
 
 def WriteToJson(fp:str, value, *locations):
   with open(fp,"r+") as f:
-    try:
-      myFile = json.load(f)
-    except ValueError:
-        myFile = {}
+    myFile = json.load(f)
     reduce(operator.getitem, locations[:-1], myFile)[locations[-1]] = value
     f.seek(0)
     json.dump(myFile, f, indent = 4)
@@ -81,7 +78,7 @@ if st.session_state.show_new_movie:
 
 
 if st.session_state.download:
-  st.download_button(label="Download JSON", data=st.session_state.json, file_name="movie_details.json", mime="text/json", icon=":material/download:",)
+  st.download_button(label="Download JSON", data=st.session_state.json, file_name="file.json", mime="text/json", icon=":material/download:",)
   st.divider()
 
 
