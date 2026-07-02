@@ -4,7 +4,7 @@ col1, col2, col3 = st.columns(3)
 with col2:
     st.title(":grey[Silver Kampong Admin Terminal]")
     st.write("[insert slogan]")
-    with st.form("login_form", border=True)
+    with st.form("login_form", border=True):
       container = st.container(border=True)
       container.text_input("**Username:**", key="username")
       container.write("")
