@@ -6,7 +6,7 @@ if "logged_in" not in st.session_state:
 login_page = st.Page("admin_login.py", title="Login")
 admin_panel = st.Page("show_pages/admin_panel.py", title="Admin Panel")
 
-if st.session_state.logged_in:
+if st.session_state.logged_in == True:
   pages = [admin_panel]
 else:
   pages = [login_page]
