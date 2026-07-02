@@ -7,7 +7,7 @@ with col2:
     container = st.container(border=True)
     container.text_input("**Username:**", key="password")
     container.write("")
-    container.text_input("**Password:**",, key="password")
+    container.text_input("**Password:**", key="password")
 
 with col3:
     login = container.button(":red[**Login**]")
