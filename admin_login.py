@@ -19,7 +19,7 @@ else:
             login = st.form_submit_button(":red[**Login**]")
     if login:
         if user_name == "mosskin-8" and password == "moss-whale-66":
-        st.session_statte.logged_in = True
-        st.rerun()
-    else:
-        st.error("Your Username or Password is incorrect", icon="🚨")
+            st.session_statte.logged_in = True
+            st.rerun()
+        else:
+            st.error("Your Username or Password is incorrect", icon="🚨")
