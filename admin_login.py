@@ -4,19 +4,21 @@ col1, col2, col3 = st.columns(3)
 with col2:
     st.title(":grey[Silver Kampong Admin Terminal]")
     st.write("[insert slogan]")
-    
-    # Forms group variables together securely during multi-page execution
-    with st.form("auth_form", border=True):
-        user_name = st.text_input("**Username:**")
-        st.write("")
-        password = st.text_input("**Password:**", type="password")
-        login = st.form_submit_button(":red[**Login**]")
+    container = st.container(border=True)
+    container.text_input("**Username:**", key="username")
+    container.write("")
+    container.text_input("**Password:**", key="password")
+
+with col3:
+    login = container.button(":red[**Login**]")
 
 if login:
-    if user_name == "mosskin-8" and password == "moss-whale-66":
+    #Connect to backend for real authentication
+    if st.session_state.username == "mosskin-8" and st.session_state.password == "moss-whale-66": #Testing purposes only, the file.json right now does not include the details
         st.session_state.logged_in = True
         st.success('Successful login!', icon="✅")
-        st.rerun()
+        st.switch_page("show_pages/admin_panel.py")
+
     else:
-        st.error("Unsuccessful login", icon="🚨")
+        st.error(f"Unsuccessful login", icon="🚨")
         st.error('Your Username or password is incorrect', icon="🚨")
