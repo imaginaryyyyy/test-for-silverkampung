@@ -12,7 +12,7 @@ with col2:
 with col3:
     login = container.button(":red[**Login**]")
 
-if user_name and password and login:
+if login:
     #Connect to backend for real authentication
     if st.session_state.user_name == "mosskin-8" and st.session_state.password == "moss-whale-66": #Testing purposes only, the file.json right now does not include the details
         st.session_state.logged_in = True
