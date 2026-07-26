@@ -29,11 +29,9 @@ def export(movie_dict):
     return json.dumps(movie_dict, indent=4)
 
 myFile = st.file_uploader("Existing JSON Movie Details File", accept_multiple_files=False, type="json")
-if myFile and st.session_state.loaded:
+if myFile:
     st.session_state.movies = json.load(myFile)
     st.session_state.loaded = True
-elif myFile not in st.session_state:
-    st.session_state.loaded = False
 
 metric_col1, metric_col2 = st.columns(2)
 with metric_col1:
@@ -74,10 +72,10 @@ if st.session_state.show_new_movie:
 
         time.sleep(1)
         st.rerun()
-    
-    if st.session_state.download:
-        st.download_button(label="Download JSON", data=st.session_state.json, file_name="file.json", mime="text/json", icon=":material/download")
-        st.divider()
+
+if st.session_state.download or len(st.session_state.movies) > 0:
+    st.download_button(label="Download JSON", data=export(st.session_state.movies), file_name="file.json", mime="text/json", icon=":material/download")
+    st.divider()
 
 st.subheader("Your Movies")
 for title, details in st.session_state.movies.items():
