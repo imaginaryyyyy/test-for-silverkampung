@@ -77,7 +77,7 @@ if st.session_state.show_new_movie:
         st.rerun()
 
 if st.session_state.download:
-    st.download_button(label="Download JSON", data=st.session_state.json, file_name="file.json", mime="text/json", icon=":material/download")
+    st.download_button(label="Download JSON", data=st.session_state.json, file_name="file.json", mime="text/json", icon=":material/download:")
     st.divider()
 
 st.subheader("Your Movies")
