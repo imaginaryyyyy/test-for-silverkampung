@@ -68,13 +68,16 @@ if st.session_state.show_new_movie:
             except FileNotFoundError:
                 st.warning(f"{movie_file} does not exist.")
         else:
-            st.warning("No file loaded.")
+            with open(movie_file, "w") as f:
+                json.dump(st.session_state.movies, f, indent=4)
+            st.session_state.loaded = True
+            st.success(f"Created new {movie_file} and saved {title}.")
 
         time.sleep(1)
         st.rerun()
 
-if st.session_state.download or len(st.session_state.movies) > 0:
-    st.download_button(label="Download JSON", data=export(st.session_state.movies), file_name="file.json", mime="text/json", icon=":material/download")
+if st.session_state.download:
+    st.download_button(label="Download JSON", data=st.session_state.json, file_name="file.json", mime="text/json", icon=":material/download")
     st.divider()
 
 st.subheader("Your Movies")
