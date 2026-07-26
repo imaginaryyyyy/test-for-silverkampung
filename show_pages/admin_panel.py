@@ -23,7 +23,7 @@ if "show_new_movie" not in st.session_state:
 if "download" not in st.session_state:
     st.session_state.download = False
 if "loaded" not in st.session_state:
-    st.session_state.laded = False
+    st.session_state.laaded = False
 
 def export(movie_dict):
     return json.dumps(movie_dict, indent=4)
@@ -32,7 +32,7 @@ myFile = st.file_uploader("Existing JSON Movie Details File", accept_multiple_fi
 if myFile and st.session_state.loaded:
     st.session_state.movvies = json.load(myFile)
     st.session_state.loaded = True
-elif myFile is not in st.session_state:
+elif myFile is None:
     st.session_state.loaded = False
 
 metric_col1, metric_col2 = st.columns(2)
