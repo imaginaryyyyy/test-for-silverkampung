@@ -1,43 +1,26 @@
+#2/7 admin login + backend
 import streamlit as st
 
 if "logged_in" not in st.session_state:
     st.session_state.logged_in = False
 
-login_page = st.Page("admin_login.py", title="Login")
-admin_panel = st.Page("show_pages/admin_panel.py", title="Admin Panel")
-pages = [login_page, admin_panel]
-
-def Show_Pages():
-  if st.session_state.logged_in == True:
-    show_page = st.navigation(pages)
-    show_page.run()
-  else:
-    admin_panel = st.Page("admin_panel.py", title="Admin Panel", visibility="hidden")
-    show_page = st.navigation(pages)
-    show_page.run()
-
-
-col1, col2, col3 = st.columns(3)
-with col2:
-    st.title(":grey[Silver Kampong Admin Terminal]")
-    st.write("[insert slogan]")
-    container = st.container(border=True)
-    user_name = container.text_input("**Username:**")
-    container.write("")
-    password = container.text_input("**Password:**")
-
-with col3:
-    login = container.button(":red[**Login**]")
-
-if user_name and password and login:
-    #Connect to backend for real authentication
-    if user_name == "mosskin-8" and password == "moss-whale-66": #Testing purposes only, the file.json right now does not include the details
-        st.session_state.logged_in = True
-        st.success('Successful login!', icon="✅")
-        st.rerun()
-
-    else:
-        st.error(f"Unsuccessful login", icon="🚨")
-        st.error('Your Username or password is incorrect', icon="🚨")
-
-Show_Pages()
+if st.session_state.logged_in == True:
+    admin_panel = st.Page("show_pages/admin_panel.py", title="Admin Panel")
+    page = st.navigation([admin_panel])
+    page.run()
+else:
+    col1, col2, col3 = st.columns(3)
+    with col2:
+        st.title(":grey[Silver Kampong Admin Terminal]")
+        st.write("[insert slogan]")
+        with st.form("login", border=True):
+            user_name = st.text_input("**Username:**")
+            st.write("")
+            password = st.text_input("**Password**", type="password")
+            login = st.form_submit_button(":red[**Login**]")
+    if login:
+        if user_name == "mosskin-8" and password == "moss-whale-66":
+            st.session_state.logged_in = True
+            st.rerun()
+        else:
+            st.error("Your Username or Password is incorrect", icon="🚨")
