@@ -13,8 +13,10 @@ def WriteToJson(fp: str, value, *locations):
         f.seek(0)
         json.dump(myFile, f, indent=4)
         f.truncate()
+def export(movie_dict):
+    return json.dumps(movie_dict, indent=4)
 
-movie_file = "file.json"
+#movie_file = "file.json"
 st.title("Silver Kampong Admin Terminal")
 
 if "movies" not in st.session_state:
@@ -25,9 +27,6 @@ if "download" not in st.session_state:
     st.session_state.download = False
 if "loaded" not in st.session_state:
     st.session_state.loaded = False
-
-def export(movie_dict):
-    return json.dumps(movie_dict, indent=4)
 
 myFile = st.file_uploader("Existing JSON Movie Details File", accept_multiple_files=False, type="json")
 if myFile:
@@ -63,7 +62,7 @@ if st.session_state.show_new_movie:
             st.session_state.download = True
 
         if st.session_state.loaded:
-                WriteToJson(movie_file, movie_details, title)
+                WriteToJson(myFile, movie_details, title)
                 st.success(f"{title} has been saved to file.")
         else:
             st.warning("No file loaded.")
