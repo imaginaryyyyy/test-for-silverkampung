@@ -1,3 +1,4 @@
+# @title
 import streamlit as st
 import json
 import datetime as dt
@@ -62,11 +63,8 @@ if st.session_state.show_new_movie:
             st.session_state.download = True
 
         if st.session_state.loaded:
-            try:
                 WriteToJson(movie_file, movie_details, title)
                 st.success(f"{title} has been saved to file.")
-            except FileNotFoundError:
-                st.warning(f"{movie_file} does not exist.")
         else:
             st.warning("No file loaded.")
 
