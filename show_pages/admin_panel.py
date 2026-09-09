@@ -6,13 +6,13 @@ import operator
 import time
 from functools import reduce
 
-def WriteToJson(fp: str, value, *locations):
-    with open(fp, "r+") as f:
-        myFile = json.load(f)
-        reduce(operator.getitem, locations[:-1], myFile)[locations[-1]] = value
-        f.seek(0)
-        json.dump(myFile, f, indent=4)
-        f.truncate()
+#def WriteToJson(fp: str, value, *locations):
+    #with open(fp, "r+") as f:
+        #myFile = json.load(f)
+        #reduce(operator.getitem, locations[:-1], myFile)[locations[-1]] = value
+        #f.seek(0)
+        #json.dump(myFile, f, indent=4)
+        #f.truncate()
 def export(movie_dict):
     return json.dumps(movie_dict, indent=4)
 
@@ -29,7 +29,7 @@ if "loaded" not in st.session_state:
     st.session_state.loaded = False
 
 myFile = st.file_uploader("Existing JSON Movie Details File", accept_multiple_files=False, type="json")
-if myFile:
+if myFile and not st.session_state.loaded:
     st.session_state.movies = json.load(myFile)
     st.session_state.loaded = True
 
@@ -62,7 +62,9 @@ if st.session_state.show_new_movie:
             st.session_state.download = True
 
         if st.session_state.loaded:
-                WriteToJson(myFile, movie_details, title)
+                st.session_state.movies[title] = movie_details
+                st.session_state.json = json.dumps(st.session_state.movies, indent=4)
+                st.download_button(label="Download New JSON", data=st.session_state.json, file_name="file.json", icon=":material/download:") 
                 st.success(f"{title} has been saved to file.")
         else:
             st.warning("No file loaded.")
@@ -70,7 +72,7 @@ if st.session_state.show_new_movie:
         time.sleep(1)
         st.rerun()
 
-    if st.session_state.download:
+    if st.session_state.download and not st.session_state.loaded:
         st.download_button(label="Download JSON", data=st.session_state.json, file_name="file.json", mime="text/json", icon=":material/download:")
         st.divider()
 
