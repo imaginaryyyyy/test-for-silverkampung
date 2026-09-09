@@ -64,20 +64,18 @@ if st.session_state.show_new_movie:
         if st.session_state.loaded:
                 st.session_state.movies[title] = movie_details
                 st.session_state.json = json.dumps(st.session_state.movies, indent=4)
-                #st.download_button(label="Download New JSON", data=st.session_state.json, file_name="file.json", icon=":material/download:") 
-                #st.success(f"{title} has been saved to file.")
+                st.download_button(label="Download New JSON", data=st.session_state.json, file_name="file.json", icon=":material/download:") 
+                st.success(f"{title} has been saved to file.")
         else:
             st.warning("No file loaded.")
 
         time.sleep(1)
         st.rerun()
 
-    if st.session_state.loaded and saved:
+    if st.session_state.movies:
         st.download_button(label="Download New JSON", data=st.session_state.json, file_name="file.json", icon=":material/download:") 
-        st.success(f"{title} has been saved to file.")
-    if st.session_state.download and not st.session_state.loaded:
-        st.download_button(label="Download JSON", data=st.session_state.json, file_name="file.json", mime="text/json", icon=":material/download:")
-        st.divider()
+    
+    st.divider()
 
 st.subheader("Your Movies")
 for title, details in st.session_state.movies.items():
