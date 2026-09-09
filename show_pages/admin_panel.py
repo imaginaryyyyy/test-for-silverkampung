@@ -35,7 +35,8 @@ if myFile and not st.session_state.loaded:
 
 metric_col1, metric_col2 = st.columns(2)
 with metric_col1:
-    st.metric("Movies", len(st.session_state.movies), border=True)
+    movie_no = len(st.session_state.movies)
+    st.metric("Movies", movie_no, border=True)
 with metric_col2:
     st.metric("Revenue", "$0", border=True)
 
@@ -88,3 +89,11 @@ for title, details in st.session_state.movies.items():
         st.write(f"Hall: {details.get('halls')}")
         st.write(f"Date: {details.get('date')}")
         st.write(f"Showtime: {details.get('showtimes')}")
+
+if movie_no == 5:
+    st.toast("Here's to our first 5 movies together!")
+    time.sleep(1)
+    st.toast("Love from Silver Kampong", icon="😍")
+
+if movie_no > 5:
+    st.toast("Thank you for being our partner!", icon="🎉")
