@@ -61,8 +61,6 @@ if st.session_state.show_new_movie:
             st.session_state.movies[title] = movie_details
             st.session_state.json = export(st.session_state.movies)
             st.session_state.download = True
-        else:
-            st.warning("No file loaded.")
 
         time.sleep(1)
         st.rerun()
