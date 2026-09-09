@@ -72,8 +72,13 @@ if st.session_state.show_new_movie:
         time.sleep(1)
         st.rerun()
 
-    if st.session_state.movies:
-        st.download_button(label="Download New JSON", data=st.session_state.json, file_name="file.json", icon=":material/download:") 
+        progress = st.progress(0, text="Initialising")
+        if st.session_state.movies:
+            download = st.download_button(label="Download New JSON", data=st.session_state.json, file_name="file.json", icon=":material/download:")
+            with download:
+                for i in range(1,100):
+                    time.sleep(0.01)
+                    progress.progress(i + 1, text="Initialising") 
     
     st.divider()
 
